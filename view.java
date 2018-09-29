@@ -48,7 +48,7 @@ public class view extends JFrame {
     view(){
         //Métodos de la JFrame
         setBounds(100, 100, 450, 300);//Definir las dimensiones de la ventana
-        setTitle("GESTIÓN DE CLIENTES - KADUM");    //Barra de título
+        setTitle("GESTIÓN DE CLIENTES");    //Barra de título
         setDefaultCloseOperation(EXIT_ON_CLOSE);    //Acción al pulsar salir
  
         //CREAR EL CONTENEDOR PRINCIPAL Y AÑADIRLO A LA VENTANA
@@ -108,6 +108,7 @@ public class view extends JFrame {
         contenedor.add(txtNIF);
         sp.putConstraint(SpringLayout.NORTH, txtNIF, 90, SpringLayout.NORTH, contenedor);
         sp.putConstraint(SpringLayout.WEST, txtNIF, 100, SpringLayout.WEST, contenedor);
+        sp.putConstraint(SpringLayout.EAST, txtNIF, 300, SpringLayout.WEST, contenedor);
         /**************** EOF CUADROS DE  TEXTO ^^^^^^^^^ **/
  
         /**************** BOF TABLA  vvvvvvvvvvvvvvvvvvvv **/

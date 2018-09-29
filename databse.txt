@@ -1,0 +1,70 @@
+CREATE TABLE `cliente` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) DEFAULT NULL,
+  `apellido` varchar(50) DEFAULT NULL,
+  `nif` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+#BORRAR CLIENTE POR ID
+DELIMITER $$
+DROP PROCEDURE IF EXISTS borrarCliente$$
+CREATE PROCEDURE borrarCliente(id INT(10))
+BEGIN
+    DELETE FROM cliente
+    WHERE cliente.id = id;
+END
+$$
+ 
+#OBTENER EL NOMBRE, APELLIDO Y NIF DE UN CLIENTE
+DELIMITER $$
+DROP PROCEDURE IF EXISTS getCliente$$
+CREATE PROCEDURE getCliente(id INT(10))
+BEGIN
+    SELECT nombre, apellido, nif
+    FROM cliente
+    WHERE cliente.id= id;
+END
+$$
+ 
+#OBTENER EL ID, NOMBRE Y NIF DE TODOS LOS CLIENTES
+DELIMITER $$
+DROP PROCEDURE IF EXISTS getClientes$$
+CREATE PROCEDURE getClientes()
+BEGIN
+    SELECT id, nombre, nif
+    FROM cliente
+    ORDER BY nombre;
+END
+$$
+ 
+#INSERTAR UN CLIENTE
+DELIMITER $$
+DROP PROCEDURE IF EXISTS insertarCliente$$
+CREATE PROCEDURE insertarCliente(nombre VARCHAR(50),
+                    apellido VARCHAR(50),
+                    nif VARCHAR(10))
+BEGIN
+    INSERT INTO cliente
+    VALUES(NULL,nombre,apellido,nif);
+END
+$$
+ 
+#MODIFICAR CLIENTE POR ID
+DELIMITER $$
+DROP PROCEDURE IF EXISTS modificarCliente$$
+CREATE PROCEDURE modificarCliente(id INT(10),
+                    nombre VARCHAR(50),
+                    apellido VARCHAR(50),
+                    nif VARCHAR(10))
+BEGIN
+    UPDATE cliente
+    SET cliente.nombre  = nombre,
+        cliente.apellido= apellido,
+        cliente.nif = nif
+    WHERE cliente.id= id;
+ 
+END
+$$
+
+
